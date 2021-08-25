@@ -23,10 +23,23 @@ lvim.keys.normal_mode['<Up>']    = '<C-y>'
 lvim.keys.normal_mode['<Down>']  = '<C-e>'
 lvim.keys.normal_mode['<S-h>']   = 'H'
 lvim.keys.normal_mode['<S-l>']   = 'L'
-lvim.keys.normal_mode['<M-l>']   = '<CMD>bnext<CR>'
-lvim.keys.normal_mode['<M-h>']   = '<CMD>bprevious<CR>'
-lvim.keys.normal_mode['<Tab>']   = '<CMD>bnext<CR>'
-lvim.keys.normal_mode['<S-Tab>'] = '<CMD>bprevious<CR>'
+lvim.keys.normal_mode['<M-l>']   = '<CMD>BufferNext<CR>'
+lvim.keys.normal_mode['<M-h>']   = '<CMD>BufferPrevious<CR>'
+lvim.keys.normal_mode['<M-C-H>'] = '<CMD>BufferMovePrevious<CR>'
+lvim.keys.normal_mode['<M-C-L>'] = '<CMD>BufferMoveNext<CR>'
+lvim.keys.normal_mode['<Tab>']   = '<CMD>BufferNext<CR>'
+lvim.keys.normal_mode['<S-Tab>'] = '<CMD>BufferPrevious<CR>'
+
+-- debug
+lvim.keys.normal_mode['<F12>']  = '<Cmd>lua require"dap".step_out()<CR>'
+lvim.keys.normal_mode['<F10>']  = '<Cmd>lua require"dap".step_over()<CR>'
+lvim.keys.normal_mode['<F5>']   = '<Cmd>lua require"dap".continue()<CR>'
+lvim.keys.normal_mode['<F6>']   = '<Cmd>lua require"dap".repl.toggle()<CR>'
+lvim.keys.normal_mode['<F9>']   = '<Cmd>lua require"dap".toggle_breakpoint()<CR>'
+lvim.keys.normal_mode['<S-F9>'] = '<Cmd>lua require"dap".set_breakpoint(vim.fn.input("Breakpoint condition: "))<CR>'
+lvim.keys.normal_mode['<F3>']   = '<Cmd>lua require"dap".close(); require"dapui".close()<CR>'
+lvim.keys.normal_mode['<F11>']  = '<Cmd>lua require"dap".step_into()<CR>'
+
 
 -- lvim.keys.normal_mode['gi'] = 'gi'
 
@@ -97,17 +110,17 @@ lvim.builtin.treesitter.highlight.enabled = true
 
 -- Additional Plugins
 lvim.plugins = {
+  {"ghifarit53/tokyonight-vim"},
+  {"kevinhwang91/rnvimr"},
+  {"godlygeek/tabular"},
+  {"Vimjas/vim-python-pep8-indent"},
+  {"tpope/vim-obsession"},
   {
     "rcarriga/nvim-dap-ui",
     config = function ()
       require('dapui').setup()
     end
   },
-  {"ghifarit53/tokyonight-vim"},
-  {"kevinhwang91/rnvimr"},
-  {"godlygeek/tabular"},
-  {"Vimjas/vim-python-pep8-indent"},
-  {"tpope/vim-obsession"},
   {
     "ray-x/lsp_signature.nvim",
     config = function ()
@@ -131,27 +144,30 @@ lvim.plugins = {
 }
 
 -- dap configurations
-local dap = require('dap')
+local status, dap = pcall(require,'dap')
 
-dap.adapters.python = {
-  type = 'executable';
-  command = 'python3';
-  args = { '-m', 'debugpy.adapter' };
-}
+if status == true
+  then
+  dap.adapters.python = {
+    type = 'executable';
+    command = 'python3';
+    args = { '-m', 'debugpy.adapter' };
+  }
 
-dap.configurations.python = {
-  {
-    -- The first three options are required by nvim-dap
-    type = 'python'; -- the type here established the link to the adapter definition: `dap.adapters.python`
-    request = 'launch';
-    name = "Launch file";
+  dap.configurations.python = {
+    {
+      -- The first three options are required by nvim-dap
+      type = 'python'; -- the type here established the link to the adapter definition: `dap.adapters.python`
+      request = 'launch';
+      name = "Launch file";
 
-    -- Options below are for debugpy, see https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings for supported options
+      -- Options below are for debugpy, see https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings for supported options
 
-    program = "${file}";
-    pythonPath = 'python3'
-  },
-}
+      program = "${file}";
+      pythonPath = 'python3'
+    },
+  }
+end
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 lvim.autocommands.custom_groups = {
