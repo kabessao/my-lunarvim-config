@@ -32,13 +32,14 @@ lvim.keys.normal_mode['<S-Tab>'] = '<CMD>BufferPrevious<CR>'
 
 -- debug
 lvim.keys.normal_mode['<F12>']  = '<Cmd>lua require"dap".step_out()<CR>'
+lvim.keys.normal_mode['<F11>']  = '<Cmd>lua require"dap".step_into()<CR>'
 lvim.keys.normal_mode['<F10>']  = '<Cmd>lua require"dap".step_over()<CR>'
-lvim.keys.normal_mode['<F5>']   = '<Cmd>lua require"dap".continue()<CR>'
-lvim.keys.normal_mode['<F6>']   = '<Cmd>lua require"dap".repl.toggle()<CR>'
 lvim.keys.normal_mode['<F9>']   = '<Cmd>lua require"dap".toggle_breakpoint()<CR>'
 lvim.keys.normal_mode['<S-F9>'] = '<Cmd>lua require"dap".set_breakpoint(vim.fn.input("Breakpoint condition: "))<CR>'
+lvim.keys.normal_mode['<F6>']   = '<Cmd>lua require"dap".repl.toggle()<CR>'
+lvim.keys.normal_mode['<F5>']   = '<Cmd>lua require"dap".continue()<CR>'
+lvim.keys.normal_mode['<F4>']   = '<Cmd>lua require"dapui".toggle()<CR>'
 lvim.keys.normal_mode['<F3>']   = '<Cmd>lua require"dap".close(); require"dapui".close()<CR>'
-lvim.keys.normal_mode['<F11>']  = '<Cmd>lua require"dap".step_into()<CR>'
 
 
 -- lvim.keys.normal_mode['gi'] = 'gi'
@@ -116,6 +117,12 @@ lvim.plugins = {
   {"Vimjas/vim-python-pep8-indent"},
   {"tpope/vim-obsession"},
   {
+    "theHamsta/nvim-dap-virtual-text",
+    config = function ()
+      vim.g.dap_virtual_text = true
+    end
+  },
+  {
     "rcarriga/nvim-dap-ui",
     config = function ()
       require('dapui').setup()
@@ -137,7 +144,7 @@ lvim.plugins = {
           size = 15
         },
         map = "<leader>r",
-        json_path = "/home/henrique/.config/lunarvim/code_runner.json"
+        json_path = "/home/henrique/.config/lvim/code_runner.json"
       }
     end
   }
