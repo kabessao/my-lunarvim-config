@@ -5,7 +5,6 @@ lvim.format_on_save = true
 lvim.lint_on_save = true
 lvim.colorscheme = "tokyonight"
 lvim.builtin.terminal.direction = 'horizontal'
-lvim.builtin.rooter.active = false
 lvim.builtin.terminal.direction= 'float'
 
 vim.cmd('set clipboard="')
