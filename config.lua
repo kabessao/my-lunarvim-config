@@ -178,7 +178,6 @@ end
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 lvim.autocommands.custom_groups = {
-  -- { "BufEnter", "*", "lua require'completion'.on_attach()" },
   { "BufEnter", "*.py", "setlocal noexpandtab tabstop=4" },
   { "FileType", "python", "setlocal noexpandtab" },
   { "FileType", "rnvimr", "tnoremap <buffer>  " },
