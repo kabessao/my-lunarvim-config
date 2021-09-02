@@ -80,7 +80,7 @@ _G.packer_plugins = {
     path = "/home/henrique/.local/share/lunarvim/site/pack/packer/opt/barbar.nvim"
   },
   ["code_runner.nvim"] = {
-    config = { "\27LJ\2\n©\1\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\2B\0\2\1K\0\1\0\tterm\1\0\2\bmap\14<leader>r\14json_path1/home/henrique/.config/lvim/code_runner.json\1\0\2\rposition\bbel\tsize\3\15\nsetup\16code_runner\frequire\0" },
+    config = { "\27LJ\2\n©\1\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\2B\0\2\1K\0\1\0\tterm\1\0\2\bmap\14<leader>r\14json_path1/home/henrique/.config/lvim/code_runner.json\1\0\2\tsize\3\15\rposition\bbel\nsetup\16code_runner\frequire\0" },
     loaded = true,
     path = "/home/henrique/.local/share/lunarvim/site/pack/packer/start/code_runner.nvim"
   },
@@ -240,14 +240,14 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: nvim-dap-virtual-text
+time([[Config for nvim-dap-virtual-text]], true)
+try_loadstring("\27LJ\2\n2\0\0\2\0\3\0\0056\0\0\0009\0\1\0+\1\2\0=\1\2\0K\0\1\0\21dap_virtual_text\6g\bvim\0", "config", "nvim-dap-virtual-text")
+time([[Config for nvim-dap-virtual-text]], false)
 -- Config for: telescope.nvim
 time([[Config for telescope.nvim]], true)
 try_loadstring("\27LJ\2\nš\1\0\0\5\0\a\0\0206\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\0016\0\3\0009\0\4\0009\0\5\0009\0\6\0\15\0\0\0X\1\b€6\0\3\0009\0\4\0009\0\5\0009\0\6\0006\2\0\0'\4\5\0B\2\2\0A\0\0\1K\0\1\0\19on_config_done\14telescope\fbuiltin\tlvim\nsetup\19core.telescope\frequire\0", "config", "telescope.nvim")
 time([[Config for telescope.nvim]], false)
--- Config for: code_runner.nvim
-time([[Config for code_runner.nvim]], true)
-try_loadstring("\27LJ\2\n©\1\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\2B\0\2\1K\0\1\0\tterm\1\0\2\bmap\14<leader>r\14json_path1/home/henrique/.config/lvim/code_runner.json\1\0\2\rposition\bbel\tsize\3\15\nsetup\16code_runner\frequire\0", "config", "code_runner.nvim")
-time([[Config for code_runner.nvim]], false)
 -- Config for: nvim-dap
 time([[Config for nvim-dap]], true)
 try_loadstring("\27LJ\2\nŽ\1\0\0\5\0\a\0\0206\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\0016\0\3\0009\0\4\0009\0\5\0009\0\6\0\15\0\0\0X\1\b€6\0\3\0009\0\4\0009\0\5\0009\0\6\0006\2\0\0'\4\5\0B\2\2\0A\0\0\1K\0\1\0\19on_config_done\bdap\fbuiltin\tlvim\nsetup\rcore.dap\frequire\0", "config", "nvim-dap")
@@ -256,10 +256,6 @@ time([[Config for nvim-dap]], false)
 time([[Config for nvim-tree.lua]], true)
 try_loadstring("\27LJ\2\n©\1\0\0\5\0\b\0\0206\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\0016\0\3\0009\0\4\0009\0\5\0009\0\6\0\15\0\0\0X\1\b€6\0\3\0009\0\4\0009\0\5\0009\0\6\0006\2\0\0'\4\a\0B\2\2\0A\0\0\1K\0\1\0\21nvim-tree.config\19on_config_done\rnvimtree\fbuiltin\tlvim\nsetup\18core.nvimtree\frequire\0", "config", "nvim-tree.lua")
 time([[Config for nvim-tree.lua]], false)
--- Config for: nvim-dap-virtual-text
-time([[Config for nvim-dap-virtual-text]], true)
-try_loadstring("\27LJ\2\n2\0\0\2\0\3\0\0056\0\0\0009\0\1\0+\1\2\0=\1\2\0K\0\1\0\21dap_virtual_text\6g\bvim\0", "config", "nvim-dap-virtual-text")
-time([[Config for nvim-dap-virtual-text]], false)
 -- Config for: nvim-treesitter
 time([[Config for nvim-treesitter]], true)
 try_loadstring("\27LJ\2\n´\1\0\0\5\0\b\0\0206\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\0016\0\3\0009\0\4\0009\0\5\0009\0\6\0\15\0\0\0X\1\b€6\0\3\0009\0\4\0009\0\5\0009\0\6\0006\2\0\0'\4\a\0B\2\2\0A\0\0\1K\0\1\0\28nvim-treesitter.configs\19on_config_done\15treesitter\fbuiltin\tlvim\nsetup\20core.treesitter\frequire\0", "config", "nvim-treesitter")
@@ -268,15 +264,19 @@ time([[Config for nvim-treesitter]], false)
 time([[Config for nvim-dap-ui]], true)
 try_loadstring("\27LJ\2\n3\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\ndapui\frequire\0", "config", "nvim-dap-ui")
 time([[Config for nvim-dap-ui]], false)
+-- Config for: code_runner.nvim
+time([[Config for code_runner.nvim]], true)
+try_loadstring("\27LJ\2\n©\1\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\2B\0\2\1K\0\1\0\tterm\1\0\2\bmap\14<leader>r\14json_path1/home/henrique/.config/lvim/code_runner.json\1\0\2\tsize\3\15\rposition\bbel\nsetup\16code_runner\frequire\0", "config", "code_runner.nvim")
+time([[Config for code_runner.nvim]], false)
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'nvim-compe', 'vim-vsnip', 'lsp_signature.nvim'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
-vim.cmd [[au InsertCharPre * ++once lua require("packer.load")({'friendly-snippets'}, { event = "InsertCharPre *" }, _G.packer_plugins)]]
-vim.cmd [[au BufWinEnter * ++once lua require("packer.load")({'barbar.nvim', 'dashboard-nvim', 'which-key.nvim', 'galaxyline.nvim', 'nvim-toggleterm.lua'}, { event = "BufWinEnter *" }, _G.packer_plugins)]]
+vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'lsp_signature.nvim', 'nvim-compe', 'vim-vsnip'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
+vim.cmd [[au BufRead * ++once lua require("packer.load")({'nvim-comment', 'gitsigns.nvim'}, { event = "BufRead *" }, _G.packer_plugins)]]
+vim.cmd [[au BufWinEnter * ++once lua require("packer.load")({'nvim-toggleterm.lua', 'which-key.nvim', 'dashboard-nvim', 'galaxyline.nvim', 'barbar.nvim'}, { event = "BufWinEnter *" }, _G.packer_plugins)]]
 vim.cmd [[au VimEnter * ++once lua require("packer.load")({'nvim-lspinstall'}, { event = "VimEnter *" }, _G.packer_plugins)]]
-vim.cmd [[au BufRead * ++once lua require("packer.load")({'gitsigns.nvim', 'nvim-comment'}, { event = "BufRead *" }, _G.packer_plugins)]]
+vim.cmd [[au InsertCharPre * ++once lua require("packer.load")({'friendly-snippets'}, { event = "InsertCharPre *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end
