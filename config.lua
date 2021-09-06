@@ -3,9 +3,14 @@
 -- general
 lvim.format_on_save = true
 lvim.lint_on_save = true
-lvim.colorscheme = "tokyonight"
 lvim.builtin.terminal.direction = 'horizontal'
 lvim.builtin.terminal.direction= 'float'
+
+local status_ok, _ = pcall(require, 'tokyonight')
+if status_ok then
+  lvim.colorscheme = "tokyonight"
+  vim.g.tokyonight_style = 'night'
+end
 
 vim.cmd('set clipboard="')
 vim.cmd('set autochdir')
@@ -110,7 +115,7 @@ lvim.builtin.treesitter.highlight.enabled = true
 
 -- Additional Plugins
 lvim.plugins = {
-  {"ghifarit53/tokyonight-vim"},
+  {"folke/tokyonight.nvim"},
   {"kevinhwang91/rnvimr"},
   {"godlygeek/tabular"},
   {"Vimjas/vim-python-pep8-indent"},
@@ -177,9 +182,9 @@ end
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 lvim.autocommands.custom_groups = {
-  { "BufEnter", "*.py", "setlocal noexpandtab tabstop=4" },
-  { "FileType", "python", "setlocal noexpandtab" },
+  { "BufEnter", "**/brain-airflow/**.py", "setlocal noexpandtab tabstop=4" },
+  { "BufEnter", "**/napplib/**.py", "setlocal noexpandtab tabstop=4" },
+
   { "FileType", "rnvimr", "tnoremap <buffer>  " },
   { "FileType", "toggleterm", "tnoremap <buffer>  " },
-  { "FileType", "python", "setlocal tabstop=4" },
 }
