@@ -3,7 +3,6 @@
 -- general
 lvim.format_on_save = true
 lvim.lint_on_save = true
-lvim.builtin.terminal.direction = 'horizontal'
 lvim.builtin.terminal.direction= 'float'
 
 local status_ok, _ = pcall(require, 'tokyonight')
@@ -45,12 +44,11 @@ lvim.keys.normal_mode['<F5>']   = '<Cmd>lua require"dap".continue()<CR>'
 lvim.keys.normal_mode['<F4>']   = '<Cmd>lua require"dapui".toggle()<CR>'
 lvim.keys.normal_mode['<F3>']   = '<Cmd>lua require"dap".close(); require"dapui".close()<CR>'
 
-
--- lvim.keys.normal_mode['gi'] = 'gi'
-
+-- Terminal mode
 lvim.keys.term_mode['<C-r>'] = '<CMD>RnvimrToggle<CR>'
 lvim.keys.term_mode['<Esc>'] = '<C-\\><C-n>'
 
+-- Setting J as its default map
 lvim.keys.visual_block_mode['J'] = 'J'
 lvim.keys.normal_mode['J'] = 'J'
 
@@ -63,12 +61,12 @@ lvim.keys.normal_mode['J'] = 'J'
 -- lvim.builtin.which_key.mappings["P"] = { "<cmd>lua require'telescope'.extensions.project.project{}<CR>", "Projects" }
 local aling_map = {
   name = "+Align Text",
-  [':'] = { "<cmd>Tab /:<cr>", "Align using :" },
-  [','] = { "<cmd>Tab /,<cr>", "Align using ," },
-  ['='] = { "<cmd>Tab /=<cr>", "Align using =" },
-  ['|'] = { "<cmd>Tab /|<cr>", "Align using |" },
-  [' '] = { "<cmd>Tab / <cr>", "Align using <Space>" },
-  [';'] = { "<cmd>Tab /;<cr>", "Align using ;" },
+  [':'] = { ":Tab /:<cr>", "Align using :" },
+  [','] = { ":Tab /,<cr>", "Align using ," },
+  ['='] = { ":Tab /=<cr>", "Align using =" },
+  ['|'] = { ":Tab /|<cr>", "Align using |" },
+  [' '] = { ":Tab / <cr>", "Align using <Space>" },
+  [';'] = { ":Tab /;<cr>", "Align using ;" },
 }
 
 lvim.builtin.which_key.vmappings['a'] = aling_map
