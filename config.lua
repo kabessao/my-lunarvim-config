@@ -145,8 +145,10 @@ lvim.plugins = {
           position = "bel",
           size = 15
         },
-        map = "<leader>r",
-        json_path = "/home/henrique/.config/lvim/code_runner.json"
+        filetype = {
+          map = "<leader>r",
+          json_path = "/home/henrique/.config/lvim/code_runner.json"
+        }
       }
     end
   }
