@@ -44,10 +44,6 @@ lvim.keys.normal_mode['<F5>']   = '<Cmd>lua require"dap".continue()<CR>'
 lvim.keys.normal_mode['<F4>']   = '<Cmd>lua require"dapui".toggle()<CR>'
 lvim.keys.normal_mode['<F3>']   = '<Cmd>lua require"dap".close(); require"dapui".close()<CR>'
 
--- Terminal mode
-lvim.keys.term_mode['<C-r>'] = '<CMD>RnvimrToggle<CR>'
-lvim.keys.term_mode['<Esc>'] = '<C-\\><C-n>'
-
 -- Setting J as its default map
 lvim.keys.visual_block_mode['J'] = 'J'
 lvim.keys.normal_mode['J'] = 'J'
@@ -182,9 +178,11 @@ end
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 lvim.autocommands.custom_groups = {
+
+  -- These are work related configurations
   { "BufEnter", "**/brain-airflow/**.py", "setlocal noexpandtab tabstop=4" },
   { "BufEnter", "**/napplib/**.py", "setlocal noexpandtab tabstop=4" },
 
-  { "FileType", "rnvimr", "tnoremap <buffer>  " },
-  { "FileType", "toggleterm", "tnoremap <buffer>  " },
+  { "BufEnter", "**/napphub-backend/**.go", "setlocal noexpandtab tabstop=2" },
+
 }
