@@ -12,7 +12,7 @@ if status_ok then
 end
 
 vim.cmd('set clipboard="')
-vim.cmd('set autochdir')
+-- vim.cmd('set autochdir')
 vim.cmd('set list lcs=tab:\\|\\ ')
 pcall(vim.cmd,'command R RnvimrToggle')
 
@@ -66,7 +66,9 @@ local aling_map = {
 }
 
 lvim.builtin.which_key.vmappings['a'] = aling_map
+lvim.builtin.which_key.mappings["r"] = {"<CMD>RunCode<CR>", "Execute File"}
 lvim.builtin.which_key.mappings["a"] = aling_map
+lvim.builtin.which_key.mappings["l"]['R'] = { "<CMD>LspRestart<CR>", "Restart Language Server"}
 
 -- TODO: User Config for predefined plugins
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
@@ -114,6 +116,7 @@ lvim.plugins = {
   {"godlygeek/tabular"},
   {"Vimjas/vim-python-pep8-indent"},
   {"tpope/vim-obsession"},
+  {"shuntaka9576/preview-swagger.nvim"},
   {
     "theHamsta/nvim-dap-virtual-text",
     config = function ()
@@ -141,10 +144,7 @@ lvim.plugins = {
           position = "bel",
           size = 15
         },
-        filetype = {
-          map = "<leader>r",
-          json_path = "/home/henrique/.config/lvim/code_runner.json"
-        }
+        filetype_path = "/home/henrique/.config/lvim/code_runner.json"
       }
     end
   }
@@ -174,6 +174,24 @@ if status == true
       pythonPath = 'python3'
     },
   }
+
+  dap.adapters.go = {
+    type = 'executable';
+    command = 'node';
+    args = {'/home/henrique/Downloads/vscode-go/dist/debugAdapter.js'};
+  }
+
+  dap.configurations.go = {
+    {
+      type = 'go';
+      name = 'Debug';
+      request = 'launch';
+      showLog = false;
+      program = "${file}";
+      dlvToolPath = vim.fn.exepath('dlv')  -- Adjust to where delve is installed
+    },
+  }
+
 end
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
@@ -185,4 +203,5 @@ lvim.autocommands.custom_groups = {
 
   { "BufEnter", "**/napphub-backend/**.go", "setlocal noexpandtab tabstop=2" },
 
+  { "BufEnter", "**/Dockerfile.**", "setlocal filetype=Dockerfile" },
 }

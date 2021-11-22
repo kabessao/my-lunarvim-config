@@ -1,3 +1,4 @@
 {
-  "python" : "python3 $file"
+  "python" : "python3 $file",
+  "go": "go run $file"
 }
