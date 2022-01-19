@@ -4,12 +4,13 @@
 lvim.format_on_save = true
 lvim.lint_on_save = true
 lvim.builtin.terminal.direction= 'float'
+lvim.builtin.notify.active = true
 
-local status_ok, _ = pcall(require, 'tokyonight')
-if status_ok then
-  lvim.colorscheme = "tokyonight"
-  vim.g.tokyonight_style = 'night'
-end
+-- local status_ok, _ = pcall(require, 'tokyonight')
+-- if status_ok then
+--   lvim.colorscheme = "tokyonight"
+--   vim.g.tokyonight_style = 'night'
+-- end
 
 vim.cmd('set clipboard="')
 -- vim.cmd('set autochdir')
