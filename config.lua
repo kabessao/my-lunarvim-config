@@ -199,10 +199,10 @@ end
 lvim.autocommands.custom_groups = {
 
   -- These are work related configurations
-  { "BufEnter", "**/brain-airflow/**.py", "setlocal noexpandtab tabstop=4" },
-  { "BufEnter", "**/napplib/**.py", "setlocal noexpandtab tabstop=4" },
+  -- { "BufEnter", "**/brain-airflow/**.py", "setlocal noexpandtab tabstop=4" },
+  -- { "BufEnter", "**/napplib/**.py", "setlocal noexpandtab tabstop=4" },
 
-  { "BufEnter", "**/napphub-backend/**.go", "setlocal noexpandtab tabstop=2" },
+  -- { "BufEnter", "**/napphub-backend/**.go", "setlocal noexpandtab tabstop=2" },
 
-  { "BufEnter", "**/Dockerfile.**", "setlocal filetype=Dockerfile" },
+  -- { "BufEnter", "**/Dockerfile.**", "setlocal filetype=Dockerfile" },
 }
