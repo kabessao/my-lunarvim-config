@@ -5,6 +5,7 @@ lvim.format_on_save = true
 lvim.lint_on_save = true
 lvim.builtin.terminal.direction= 'float'
 lvim.builtin.notify.active = true
+lvim.builtin.bufferline.options.always_show_bufferline = true
 
 -- local status_ok, _ = pcall(require, 'tokyonight')
 -- if status_ok then
