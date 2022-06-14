@@ -1,5 +1,5 @@
 {
-  "python": "python3 $file",
+  "python": "time python3 $file",
   "go": "go run $file",
   "sh": "bash $file"
 }

@@ -1,8 +1,8 @@
 -- THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT
 
 -- general
-lvim.format_on_save = true
-lvim.lint_on_save = true
+lvim.format_on_save = false
+lvim.lint_on_save = false
 lvim.builtin.terminal.direction= 'float'
 lvim.builtin.notify.active = true
 lvim.builtin.bufferline.options.always_show_bufferline = true
@@ -30,8 +30,8 @@ lvim.keys.normal_mode['<S-h>']   = 'H'
 lvim.keys.normal_mode['<S-l>']   = 'L'
 lvim.keys.normal_mode['<M-l>']   = '<CMD>BufferLineCycleNext<CR>'
 lvim.keys.normal_mode['<M-h>']   = '<CMD>BufferLineCyclePrev<CR>'
-lvim.keys.normal_mode['<M-C-H>'] = '<CMD>BufferLineMoveNext<CR>'
-lvim.keys.normal_mode['<M-C-L>'] = '<CMD>BufferLineMovePrev<CR>'
+lvim.keys.normal_mode['<M-C-L>'] = '<CMD>BufferLineMoveNext<CR>'
+lvim.keys.normal_mode['<M-C-H>'] = '<CMD>BufferLineMovePrev<CR>'
 lvim.keys.normal_mode['<Tab>']   = '<CMD>BufferLineCycleNext<CR>'
 lvim.keys.normal_mode['<S-Tab>'] = '<CMD>BufferLineCyclePrev<CR>'
 
@@ -47,8 +47,8 @@ lvim.keys.normal_mode['<F4>']   = '<Cmd>lua require"dapui".toggle()<CR>'
 lvim.keys.normal_mode['<F3>']   = '<Cmd>lua require"dap".close(); require"dapui".close()<CR>'
 
 -- Setting J as its default map
-lvim.keys.visual_block_mode['J'] = 'J'
-lvim.keys.normal_mode['J'] = 'J'
+-- lvim.keys.visual_block_mode['J'] = 'J'
+-- lvim.keys.normal_mode['J'] = 'J'
 
 -- unmap a default keymapping
 -- lvim.keys.normal_mode["<C-Up>"] = ""
@@ -74,10 +74,8 @@ lvim.builtin.which_key.mappings["l"]['R'] = { "<CMD>LspRestart<CR>", "Restart La
 
 -- TODO: User Config for predefined plugins
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
-lvim.builtin.dashboard.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.side = "left"
-lvim.builtin.nvimtree.show_icons.git = 1
 lvim.builtin.dap.active = true
 
 -- if you don't want all the parsers change this to a table of the ones you want
@@ -119,12 +117,8 @@ lvim.plugins = {
   {"Vimjas/vim-python-pep8-indent"},
   {"tpope/vim-obsession"},
   {"shuntaka9576/preview-swagger.nvim"},
-  {
-    "theHamsta/nvim-dap-virtual-text",
-    config = function ()
-      vim.g.dap_virtual_text = true
-    end
-  },
+  {"theHamsta/nvim-dap-virtual-text"},
+  {"dansomething/vim-eclim"},
   {
     "rcarriga/nvim-dap-ui",
     config = function ()
@@ -151,6 +145,9 @@ lvim.plugins = {
     end
   }
 }
+
+vim.g.dap_virtual_text = true
+
 
 -- dap configurations
 local status, dap = pcall(require,'dap')
@@ -197,13 +194,4 @@ if status == true
 end
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
-lvim.autocommands.custom_groups = {
-
-  -- These are work related configurations
-  -- { "BufEnter", "**/brain-airflow/**.py", "setlocal noexpandtab tabstop=4" },
-  -- { "BufEnter", "**/napplib/**.py", "setlocal noexpandtab tabstop=4" },
-
-  -- { "BufEnter", "**/napphub-backend/**.go", "setlocal noexpandtab tabstop=2" },
-
-  -- { "BufEnter", "**/Dockerfile.**", "setlocal filetype=Dockerfile" },
-}
+vim.api.nvim_create_autocmd("BufEnter", { pattern = { "**.java" }, command = "setlocal noexpandtab tabstop=2" })
